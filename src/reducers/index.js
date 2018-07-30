@@ -11,8 +11,8 @@ export const gameReducer = (state=initialState, action) => {
   if (action.type === SET_GUESS) {
     return Object.assign({}, state, {
       userGuess: action.num,
-      feedback: state.feedback,
-      guesses: state.guesses
+      feedback: action.feedback,
+      guesses: action.guesses
       // [...initialState.guesses, action.num]
     });
   }
