@@ -3,6 +3,9 @@ import React from 'react';
 import './info-section.css';
 
 export default function InfoSection(props) {
+  if (!props.showInfo) {
+    return null
+  } else
   return (
     <section id="what" tabIndex="-1">
       <h2>What do I do?</h2>

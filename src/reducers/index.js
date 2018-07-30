@@ -1,10 +1,11 @@
-import { SET_GUESS, NEW_GAME } from '../actions';
+import { SET_GUESS, NEW_GAME, SHOW_INFO } from '../actions';
 
 const initialState = {
   userGuess: '',
   feedback: 'Make A Guess',
   guesses: [],
-  answer: Math.round(Math.random() * 100) + 1
+  answer: Math.round(Math.random() * 100) + 1,
+  showInfo: false
 }
 
 export const gameReducer = (state = initialState, action) => {
@@ -37,6 +38,12 @@ export const gameReducer = (state = initialState, action) => {
       guesses: [],
       answer: Math.round(Math.random() * 100) + 1
     })
+  }
+
+  if (action.type === SHOW_INFO) {
+    return Object.assign({}, state, {
+      showInfo: !state.showInfo
+    });
   }
   return state;
 }

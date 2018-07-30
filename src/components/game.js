@@ -4,7 +4,7 @@ import Header from './header';
 import GuessSection from './guess-section';
 import StatusSection from './status-section';
 import InfoSection from './info-section';
-import { setGuess, newGame } from '../actions';
+import { setGuess, newGame, showInfo } from '../actions';
 import { connect } from 'react-redux';
 
 export class Game extends React.Component {
@@ -15,6 +15,10 @@ export class Game extends React.Component {
 
   newGame() {
     this.props.dispatch(newGame());
+  }
+
+  showInfo() {
+    this.props.dispatch(showInfo());
   }
 
   render() {
@@ -35,26 +39,20 @@ export class Game extends React.Component {
           <StatusSection guesses={this.props.guesses}
             auralStatus={this.props.auralStatus}
           />
-          <InfoSection />
+          <InfoSection showInfo={this.props.showInfo}/>
         </main>
       </div>
     );
   }
 }
 
-Game.defaultProps = {
-  userGuess: '',
-  feedback: 'Make a Guess',
-  guesses: [],
-  answer: Math.round(Math.random() * 100) + 1
-};
-
 const mapStateToProps = state => ({
   userGuess: state.userGuess,
   feedback: state.feedback,
   auralStatus: state.auralStatus,
   guesses: state.guesses,
-  correctAnswer: state.correctAnswer
+  correctAnswer: state.answer,
+  showInfo: state.showInfo
 });
 
 export default connect(mapStateToProps)(Game);
