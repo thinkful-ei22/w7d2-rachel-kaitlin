@@ -40,8 +40,8 @@ export class Game extends React.Component {
 
 Game.defaultProps = {
   userGuess: '',
-  feedback: 'Cold as ice',
-  guesses: [0, 5, 12],
+  feedback: 'Make a Guess',
+  guesses: [],
   answer: 50
 };
 
